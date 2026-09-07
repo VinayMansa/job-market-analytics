@@ -1,4 +1,6 @@
-from sqlalchemy import Column, Integer, String, Numeric, DateTime, Text
+from datetime import datetime
+from sqlalchemy import String, Numeric, DateTime, Text
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 
 from app.database import Base
@@ -7,19 +9,19 @@ from app.database import Base
 class Job(Base):
     __tablename__ = "jobs"
 
-    id = Column(Integer, primary_key=True, index=True)
-    external_id = Column(String, unique=True, index=True, nullable=False)
-    source = Column(String, nullable=False)
-    title = Column(String, nullable=False, index=True)
-    company = Column(String, index=True)
-    location = Column(String, index=True)
-    description = Column(Text)
-    salary_min = Column(Numeric)
-    salary_max = Column(Numeric)
-    remote = Column(String)
-    url = Column(String)
-    posted_at = Column(DateTime(timezone=True))
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    external_id: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)
+    source: Mapped[str] = mapped_column(String, nullable=False)
+    title: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    company: Mapped[str | None] = mapped_column(String, index=True)
+    location: Mapped[str | None] = mapped_column(String, index=True)
+    description: Mapped[str | None] = mapped_column(Text)
+    salary_min: Mapped[float | None] = mapped_column(Numeric)
+    salary_max: Mapped[float | None] = mapped_column(Numeric)
+    remote: Mapped[str | None] = mapped_column(String)
+    url: Mapped[str | None] = mapped_column(String)
+    posted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    extracted_skills = Column(Text)
-    seniority = Column(String)
+    extracted_skills: Mapped[str | None] = mapped_column(Text)
+    seniority: Mapped[str | None] = mapped_column(String)
