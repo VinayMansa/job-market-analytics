@@ -131,6 +131,17 @@ __pypackages__/
 celerybeat-schedule
 celerybeat.pid
 
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend env
+backend/.env
+
+# General
+.DS_Store
+EOF
+
 # Redis
 *.rdb
 *.aof
