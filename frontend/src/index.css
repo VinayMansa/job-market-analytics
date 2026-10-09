@@ -1,18 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
-  --color-paper: #F1EFE8;
-  --color-ink: #1C1B18;
-  --color-muted: #6B6A63;
-  --color-hairline: #D3D1C7;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-mono: "Montserrat", system-ui, sans-serif;
+  --color-paper: #F6F8F7;
+  --color-ink: #0F1A17;
+  --color-muted: #5B6B66;
+  --color-hairline: #DCE3E0;
   --color-teal: #0F6E56;
   --color-amber: #BA7517;
+  --color-midnight: #0A3D31;
+  --color-mint: #D6EBE2;
 }
 
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+@layer base {
+  h1,
+  h2 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Keeps numbers aligned now that the mono font is gone */
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.dot-grid {
+  background-image: radial-gradient(#DCE3E0 1px, transparent 1px);
+  background-size: 20px 20px;
 }

@@ -23,3 +23,18 @@ export type Job = {
     remote_breakdown: { remote: number; hybrid: number; onsite: number; unknown: number };
     top_locations: { location: string; count: number }[];
   };
+
+  export type Profile = {
+    id: number;
+    user_id: number;
+    headline: string | null;
+    skills: string | null;
+    experience_level: string | null;
+    preferred_location: string | null;
+    open_to_remote: boolean;
+    desired_salary_min: number | null;
+    desired_salary_max: number | null;
+    resume_text: string | null;
+  };
+  
+  export type ProfileInput = Omit<Profile, "id" | "user_id">;

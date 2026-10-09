@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getJobs } from "../api/jobs";
 import type { Job } from "../types";
 
 export default function JobSearch() {
+  const [params] = useSearchParams();
   const [jobs, setJobs] = useState<Job[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(params.get("search") ?? "");
 
   useEffect(() => {
     getJobs({ search }).then((res) => setJobs(res.results));
